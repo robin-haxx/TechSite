@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects: Technical Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles - Same as home page */
+        header {
+            background-color: #fff;
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1600px; /* Increased from 1200px */
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 80px;
+            padding: 3rem 2rem;
+            background-color: #fff;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin: 2rem 0 0 2rem;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #333;
+        }
+
+        /* Projects Container */
+        .projects-container {
+            max-width: 1600px; /* Increased from 1200px */
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Technical Project Layout */
+        .technical-project {
+            background-color: #fff;
+            margin-bottom: 4rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .technical-header {
+            padding: 3rem 4rem; /* Increased horizontal padding */
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .project-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+
+        .technical-header h2 {
+            font-size: 2.2rem; /* Slightly larger */
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased min-width */
+            gap: 2rem; /* Increased gap */
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.9rem; /* Slightly larger */
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            font-size: 1.1rem; /* Slightly larger */
+            color: #333;
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.8;
+            margin-top: 2rem;
+            font-size: 1.05rem; /* Slightly larger */
+        }
+
+        /* Technical Drawings Gallery */
+        .drawings-section {
+            padding: 4rem; /* Increased padding */
+        }
+
+        .drawings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem; /* Increased gap */
+            margin-bottom: 2rem;
+        }
+
+        .drawings-grid.single-item {
+            grid-template-columns: 1fr;
+            max-width: 1200px; /* Increased from 800px */
+            margin: 0 auto 2rem;
+        }
+
+        .drawing-card {
+            background-color: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .drawing-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .drawing-image {
+            width: 100%;
+            height: 500px; /* Increased from 300px */
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #999;
+            position: relative;
+        }
+
+        .drawing-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: white;
+        }
+
+        .drawing-info {
+            padding: 1.5rem; /* Increased padding */
+            background-color: #fff;
+        }
+
+        .drawing-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem; /* Slightly larger */
+        }
+
+        .drawing-type {
+            font-size: 0.9rem; /* Slightly larger */
+            color: #666;
+        }
+
+        /* PDF Embed Styles */
+        .pdf-embed {
+            width: 100%;
+            height: 800px; /* Increased from 600px */
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* For single item, make it even larger */
+        .drawings-grid.single-item .pdf-embed {
+            height: 900px;
+        }
+
+        /* Detail Drawings */
+        .detail-section {
+            background-color: #f8f8f8;
+            padding: 2rem;
+            margin: 0 3rem 3rem;
+            border-radius: 4px;
+        }
+
+        .detail-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .detail-thumb {
+            background-color: #fff;
+            height: 150px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .detail-thumb:hover {
+            border-color: #999;
+        }
+
+        /* Software Used Tags */
+        .software-tags {
+            display: flex;
+            gap: 0.75rem; /* Increased gap */
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .software-tag {
+            padding: 0.35rem 1rem; /* Increased padding */
+            background-color: #e0e0e0;
+            color: #666;
+            font-size: 0.9rem; /* Slightly larger */
+            border-radius: 20px;
+        }
+
+        /* View Full Set Button */
+        .view-full-set {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-full-set:hover {
+            background-color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 2000px) {
+            .projects-container {
+                max-width: 100%;
+                padding: 2rem 1rem;
+            }
+
+            .technical-header,
+            .drawings-section {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .drawings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .technical-header,
+            .drawings-section {
+                padding: 2rem 1rem;
+            }
+
+            .pdf-embed {
+                height: 500px; /* Smaller on mobile but still larger than before */
+            }
+
+            .drawings-grid.single-item .pdf-embed {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Robbie Kinnaird</a>
+            <ul class="nav-links">
+       
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Projects: Technical Documentation</h1>
+        
+    </section>
+
+    <!-- Back Button -->
+    <!--<a href="index.html" class="back-button">← Back to Portfolio</a>-->
+
+    <!-- Projects Container -->
+    <div class="projects-container">
+        
+        <!-- Project 1: Sustainability Retreat -->
+        <article class="technical-project">
+            <div class="technical-header">
+                <div class="project-number">01</div>
+                <h2>Sustainability Retreat</h2>
+                
+                <div class="project-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Client</span>
+                        <span class="spec-value">Enspiral</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Course</span>
+                        <span class="spec-value">BILD232</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Documentation Type</span>
+                        <span class="spec-value">Research Presentation</span>
+                    </div>
+
+                </div>
+
+                <p class="project-description">
+                    Sustainability analysis of a proposed event space in Trentham, serving as a basis for applications of green design research.
+                </p>
+
+                <div class="software-tags">
+                    <span class="software-tag">AutoCAD</span>
+                    <span class="software-tag">Revit</span>
+                    <span class="software-tag">SketchUp</span>
+                    <span class="software-tag">Adobe Illustrator</span>
+                </div>
+            </div>
+
+            <div class="drawings-section">
+                <div class="drawings-grid">
+                    <div class="drawing-card">
+                        <div class="drawing-image">
+                            <embed src="Kinnaird_Robbie_300486148_BILD232_2.1_Design group 3.pdf" 
+                                   type="application/pdf" 
+                                   class="pdf-embed" />
+                        </div>
+                        <div class="drawing-info">
+                            <div class="drawing-title">Design Document 2.1</div>
+                            <div class="drawing-type">Sustainability Retreat - Part 1</div>
+                        </div>
+                    </div>
+
+                    <div class="drawing-card">
+                        <div class="drawing-image">
+                            <embed src="Kinnaird_Robbie_300486148_BILD232_2.2_Design group 3.pdf" 
+                                   type="application/pdf" 
+                                   class="pdf-embed" />
+                        </div>
+                        <div class="drawing-info">
+                            <div class="drawing-title">Design Document 2.2</div>
+                            <div class="drawing-type">Sustainability Retreat - Part 2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="view-full-set">View Full Project Documentation →</a>
+            </div>
+        </article>
+
+        <!-- Project 2: Partition Design -->
+        <article class="technical-project">
+            <div class="technical-header">
+                <div class="project-number">02</div>
+                <h2>Modular Partition System</h2>
+                
+                <div class="project-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Project Type</span>
+                        <span class="spec-value">Interior Design</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Format</span>
+                        <span class="spec-value">A3 Documentation</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Date</span>
+                        <span class="spec-value">August 2021</span>
+                    </div>
+
+                </div>
+
+                <p class="project-description">
+                    Design documentation for a modular partition system focusing on flexibility, sustainability, and efficient space utilization. The project explores innovative approaches to creating adaptable interior environments.
+                </p>
+
+                <div class="software-tags">
+                    <span class="software-tag">AutoCAD</span>
+                    <span class="software-tag">SketchUp</span>
+                    <span class="software-tag">Adobe Creative Suite</span>
+                </div>
+            </div>
+
+            <div class="drawings-section">
+                <div class="drawings-grid single-item">
+                    <div class="drawing-card">
+                        <div class="drawing-image">
+                            <embed src="20210811_Kinnaird_Robbie_Partition_a3.pdf" 
+                                   type="application/pdf" 
+                                   class="pdf-embed" />
+                        </div>
+                        <div class="drawing-info">
+                            <div class="drawing-title">Partition System Design</div>
+                            <div class="drawing-type">A3 Format Technical Documentation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="view-full-set">View Full Project Documentation →</a>
+            </div>
+        </article>
+                <!-- Project 3: Moa Data Visualization -->
+        <article class="technical-project">
+            <div class="technical-header">
+                <div class="project-number">03</div>
+                <h2>Moa "Collection": NZ Natural History Data Visualization</h2>
+                
+                <div class="project-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Project Type</span>
+                        <span class="spec-value">Interactive Data Visualization</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Data Source</span>
+                        <span class="spec-value">The Lost World of the Moa</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Authors</span>
+                        <span class="spec-value">Holdaway & Worthy</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Course</span>
+                        <span class="spec-value">MDDN342</span>
+                    </div>
+                </div>
+
+                <p class="project-description">
+                    A visualization of Aotearoa's prehistoric Moa populations, using data from The Lost World of the Moa by Holdaway and Worthy. This interactive web application explores the distribution and characteristics of various Moa species that once inhabited New Zealand.
+                </p>
+
+                <div class="software-tags">
+                    <span class="software-tag">JavaScript</span>
+                    <span class="software-tag">D3.js</span>
+                    <span class="software-tag">HTML5</span>
+                    <span class="software-tag">CSS3</span>
+                    <span class="software-tag">Data Visualization</span>
+                </div>
+            </div>
+
+            <div class="drawings-section">
+                <div class="drawings-grid single-item">
+                    <div class="drawing-card">
+                        <div class="interactive-preview">
+                            <img src="moa.png" alt="Moa Data Visualization Preview">
+                            <div class="preview-overlay">
+                                <h3>Interactive Visualization</h3>
+                                <a href="https://23-mddn342.github.io/randomised-collection-robin-haxx/index.html" 
+                                   target="_blank" 
+                                   class="launch-app-btn">Launch Application →</a>
+                            </div>
+                        </div>
+                        <div class="drawing-info">
+                            <div class="drawing-title">Moa Population Visualization</div>
+                            <div class="drawing-type">Interactive Web Application</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://23-mddn342.github.io/randomised-collection-robin-haxx/index.html" 
+                   target="_blank" 
+                   class="view-full-set">View Live Application →</a>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Robbie Kinnaird. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
+
+</body>
+</html>
